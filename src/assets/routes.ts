@@ -17,6 +17,26 @@ const routes = [
         path: 'animated-heart',
         url: 'https://codesandbox.io/embed/mystifying-nightingale-wtjwiv?fontsize=14&hidenavigation=1&theme=dark',
       },
+      {
+        title: 'Simple Carousel',
+        path: 'simple-carousel',
+        url: 'https://codesandbox.io/embed/simple-carousel-rkolfs?fontsize=14&hidenavigation=1&theme=dark',
+      },
+      {
+        title: 'Extended Carousel',
+        path: 'extended-carousel',
+        url: 'https://codesandbox.io/embed/extended-carousel-nq3h9f?fontsize=14&hidenavigation=1&theme=dark',
+      },
+      {
+        title: 'Advanced Carousel',
+        path: 'advanced-carousel',
+        url: 'https://codesandbox.io/embed/dreamy-sound-coe3pp?fontsize=14&hidenavigation=1&theme=dark',
+      },
+      {
+        title: 'Final Carousel',
+        path: 'final-carousel',
+        url: 'https://codesandbox.io/embed/final-carousel-bpuoz1?fontsize=14&hidenavigation=1&theme=dark',
+      },
     ],
   },
   {
