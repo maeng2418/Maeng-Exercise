@@ -58,6 +58,7 @@ const SideBar: React.FC = () => {
 
   useEffect(() => {
     showMore();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
