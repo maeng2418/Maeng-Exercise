@@ -1,97 +1,20 @@
 import { motion, useAnimation } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { AiFillFire, AiFillMessage, AiOutlineMenuFold, AiOutlineMenuUnfold } from 'react-icons/ai';
-import {
-  BsBookmarkFill,
-  BsEyeFill,
-  BsFillPersonFill,
-  BsGithub,
-  BsLinkedin,
-  BsSearch,
-} from 'react-icons/bs';
-import { FaCog } from 'react-icons/fa';
-import { IoMdArrowRoundUp } from 'react-icons/io';
-import { MdNightlightRound } from 'react-icons/md';
+import { AiOutlineMenuFold, AiOutlineMenuUnfold } from 'react-icons/ai';
+import { Link, useLocation } from 'react-router-dom';
+import routes, { bottomLinks } from 'src/assets/routes';
 
-const data = [
-  {
-    name: 'HTML﹒CSS﹒JS',
-    items: [
-      {
-        title: 'Popular',
-        icon: AiFillFire,
-      },
-      {
-        title: 'Most Upvoted',
-        icon: IoMdArrowRoundUp,
-      },
-      {
-        title: 'Best Discussions',
-        icon: AiFillMessage,
-      },
-      {
-        title: 'Search',
-        icon: BsSearch,
-      },
-    ],
-  },
-  {
-    name: 'React',
-    items: [
-      {
-        title: 'Bookmarks',
-        icon: BsBookmarkFill,
-      },
-      {
-        title: 'Reading history',
-        icon: BsEyeFill,
-      },
-      {
-        title: 'Focus Mode',
-        icon: MdNightlightRound,
-      },
-      {
-        title: 'Customize',
-        icon: FaCog,
-      },
-    ],
-  },
-];
-
-const datafooter = [
-  {
-    name: 'Contact',
-    items: [
-      {
-        title: 'Blog',
-        icon: BsBookmarkFill,
-      },
-      {
-        title: 'Github',
-        icon: BsGithub,
-      },
-      {
-        title: 'LinkedIn',
-        icon: BsLinkedin,
-      },
-      {
-        title: 'Portfolio',
-        icon: BsFillPersonFill,
-      },
-    ],
-  },
-];
-
-export default function Home() {
+const SideBar: React.FC = () => {
   const [active, setActive] = useState(false);
   const controls = useAnimation();
   const controlTitle = useAnimation();
   const controlText = useAnimation();
   const controlTitleText = useAnimation();
+  const { pathname } = useLocation();
 
   const showMore = () => {
     controls.start({
-      width: '250px',
+      width: '300px',
       transition: { duration: 0.001 },
     });
     controlTitle.start({
@@ -144,31 +67,33 @@ export default function Home() {
     >
       {/* 타이틀 */}
       <div className="sticky top-0">
-        <h2 className="font-thick text-white text-2xl flex items-center p-4 pb-2 dark:bg-slate-900">
-          <span>
-            {active && (
-              <AiOutlineMenuFold
-                onClick={showLess}
-                className="text-2xl text-white cursor-pointer"
-              />
-            )}
-            {!active && (
-              <AiOutlineMenuUnfold
-                onClick={showMore}
-                className="text-2xl text-white cursor-pointer"
-              />
-            )}
-          </span>
-          {
-            <motion.span animate={controlTitle} className="ml-2">
-              Maeng&apos;s Exercise
-            </motion.span>
-          }
-        </h2>
+        <Link to="/">
+          <h2 className="font-thick text-white text-2xl flex items-center p-4 pb-2 dark:bg-slate-900">
+            <span>
+              {active && (
+                <AiOutlineMenuFold
+                  onClick={showLess}
+                  className="text-2xl text-white cursor-pointer"
+                />
+              )}
+              {!active && (
+                <AiOutlineMenuUnfold
+                  onClick={showMore}
+                  className="text-2xl text-white cursor-pointer"
+                />
+              )}
+            </span>
+            {
+              <motion.span animate={controlTitle} className="ml-2">
+                Maeng&apos;s Exercise
+              </motion.span>
+            }
+          </h2>
+        </Link>
         <div className="h-4 bg-gradient-to-b from-white dark:from-slate-900 sticky top-200"></div>
       </div>
       <div className="grow">
-        {data.map((group, index) => (
+        {routes.map((group, index) => (
           <ul key={index} className="my-2">
             {/* 메뉴 그룹 */}
             <motion.p
@@ -179,14 +104,26 @@ export default function Home() {
             </motion.p>
             {/* 메뉴 */}
             {group.items.map((item, index2) => (
-              <li key={index2} className="group flex px-4 py-1 cursor-pointer">
-                <item.icon className="text-lg text-gray-500 group-hover:text-white" />
-                <motion.p
-                  animate={controlText}
-                  className="ml-4 text-sm font-bold text-gray-400 group-hover:text-white"
-                >
-                  {item.title}
-                </motion.p>
+              <li key={index2} className="group cursor-pointer">
+                <Link to={`${group.path}/${item.path}`} className="flex px-4 py-1">
+                  <group.icon
+                    className={`text-lg group-hover:text-white ${
+                      pathname.includes(`${group.path}/${item.path}`)
+                        ? 'text-white'
+                        : 'text-gray-500'
+                    }`}
+                  />
+                  <motion.p
+                    animate={controlText}
+                    className={`ml-4 text-sm font-bold group-hover:text-white ${
+                      pathname.includes(`${group.path}/${item.path}`)
+                        ? 'text-white'
+                        : 'text-gray-400'
+                    }`}
+                  >
+                    {item.title}
+                  </motion.p>
+                </Link>
               </li>
             ))}
           </ul>
@@ -194,21 +131,28 @@ export default function Home() {
       </div>
       {/* 하단 */}
       <div>
-        {datafooter.map((group, index) => (
+        {bottomLinks.map((group, index) => (
           <ul key={index} className="my-2">
             <motion.p animate={controlTitleText} className="mb-2 ml-4 text-sm font-bold text-white">
               {group.name}
             </motion.p>
 
             {group.items.map((item, index2) => (
-              <li key={index2} className="group flex px-4 py-1 cursor-pointer">
-                <item.icon className="text-lg text-gray-500 group-hover:text-white" />
-                <motion.p
-                  animate={controlText}
-                  className="ml-4 text-sm font-bold text-gray-400 group-hover:text-white"
+              <li key={index2} className="group cursor-pointer">
+                <a
+                  className="flex px-4 py-1"
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  {item.title}
-                </motion.p>
+                  <item.icon className="text-lg text-gray-500 group-hover:text-white" />
+                  <motion.p
+                    animate={controlText}
+                    className="ml-4 text-sm font-bold text-gray-400 group-hover:text-white"
+                  >
+                    {item.title}
+                  </motion.p>
+                </a>
               </li>
             ))}
           </ul>
@@ -216,4 +160,6 @@ export default function Home() {
       </div>
     </motion.aside>
   );
-}
+};
+
+export default SideBar;

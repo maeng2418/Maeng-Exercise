@@ -5,6 +5,10 @@
   word-break: keep-all;
 }
 
+.App {
+  display: flex;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
