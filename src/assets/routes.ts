@@ -12,6 +12,11 @@ const routes = [
         path: 'creative-list',
         url: 'https://codesandbox.io/embed/determined-golick-bpc6jb?fontsize=14&hidenavigation=1&theme=dark',
       },
+      {
+        title: 'Animated Heart',
+        path: 'animated-heart',
+        url: 'https://codesandbox.io/embed/mystifying-nightingale-wtjwiv?fontsize=14&hidenavigation=1&theme=dark',
+      },
     ],
   },
   {
