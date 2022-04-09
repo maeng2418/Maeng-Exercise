@@ -42,6 +42,11 @@ const routes = [
         path: 'intersectionobserver',
         url: 'https://codesandbox.io/embed/intersectionobserver-5ly895?fontsize=14&hidenavigation=1&theme=dark',
       },
+      {
+        title: 'Admin Board',
+        path: 'admin-baord',
+        url: 'https://codesandbox.io/embed/serverless-breeze-p4y61e?fontsize=14&hidenavigation=1&theme=dark',
+      },
     ],
   },
   {
