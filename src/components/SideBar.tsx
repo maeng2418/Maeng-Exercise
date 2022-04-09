@@ -68,29 +68,26 @@ const SideBar: React.FC = () => {
     >
       {/* 타이틀 */}
       <div className="sticky top-0">
-        <Link to="/">
-          <h2 className="font-thick text-white text-2xl flex items-center p-4 pb-2 dark:bg-slate-900">
-            <span>
-              {active && (
-                <AiOutlineMenuFold
-                  onClick={showLess}
-                  className="text-2xl text-white cursor-pointer"
-                />
-              )}
-              {!active && (
-                <AiOutlineMenuUnfold
-                  onClick={showMore}
-                  className="text-2xl text-white cursor-pointer"
-                />
-              )}
-            </span>
-            {
-              <motion.span animate={controlTitle} className="ml-2">
-                Maeng&apos;s Exercise
-              </motion.span>
-            }
-          </h2>
-        </Link>
+        <h2 className="font-thick text-white text-2xl flex items-center p-4 pb-2 dark:bg-slate-900">
+          <span>
+            {active && (
+              <AiOutlineMenuFold
+                onClick={showLess}
+                className="text-2xl text-white cursor-pointer"
+              />
+            )}
+            {!active && (
+              <AiOutlineMenuUnfold
+                onClick={showMore}
+                className="text-2xl text-white cursor-pointer"
+              />
+            )}
+          </span>
+          <Link to="/" className="ml-2">
+            {<motion.span animate={controlTitle}>Maeng&apos;s Exercise</motion.span>}
+          </Link>
+        </h2>
+
         <div className="h-4 bg-gradient-to-b from-white dark:from-slate-900 sticky top-200"></div>
       </div>
       <div className="grow">
