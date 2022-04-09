@@ -37,6 +37,11 @@ const routes = [
         path: 'final-carousel',
         url: 'https://codesandbox.io/embed/final-carousel-bpuoz1?fontsize=14&hidenavigation=1&theme=dark',
       },
+      {
+        title: 'IntersectionObserver',
+        path: 'intersectionobserver',
+        url: 'https://codesandbox.io/embed/intersectionobserver-5ly895?fontsize=14&hidenavigation=1&theme=dark',
+      },
     ],
   },
   {
